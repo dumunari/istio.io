@@ -55,7 +55,7 @@ Improvements in 1.23 are not limited to Istio itself: in this release, everyone'
 
 The new application features a more modern design, and performance improvements that resolve some unexpected slowness in the `productpage` and `details` services.
 
-{{< image width="80%" link="/docs/setup/getting-started/bookinfo-browser.png" caption="The improved Bookinfo application" >}}
+{{< image width="80%" link="/pt-br/docs/setup/getting-started/bookinfo-browser.png" caption="The improved Bookinfo application" >}}
 
 ### Other highlights
 

@@ -37,14 +37,14 @@ With revision tags, there’s now a layer of indirection: you can create tags li
 For example, imagine you have two revisions, `1-7-6` and `1-8-0`. You create a revision tag `prod` pointed to revision `1-7-6` and create a revision tag `canary` pointed to the newer `1-8-0` revision.
 
 {{< image width="40%"
-    link="/docs/setup/upgrade/canary/revision-tag-1.png"
+    link="/pt-br/docs/setup/upgrade/canary/revision-tag-1.png"
     caption="Namespaces A and B pointed to 1-7-6, namespace C pointed to 1-8-0"
     >}}
 
 Now, when you’re ready to promote the `1-8-0` revision from `canary` to `prod`, you can re-associate the `prod` tag with the `1-8-0` Istiod revision. Now all namespaces using `istio.io/rev=prod` will use the newer `1-8-0` revision for injection.
 
 {{< image width="40%"
-    link="/docs/setup/upgrade/canary/revision-tag-2.png"
+    link="/pt-br/docs/setup/upgrade/canary/revision-tag-2.png"
     caption="Namespaces A, B, and C pointed to 1-8-0"
     >}}
 
