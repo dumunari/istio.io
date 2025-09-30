@@ -102,6 +102,8 @@ disableAliases = true
         contentDir = "content/es"
     [languages.uk]
         contentDir = "content/uk"
+    [languages.pt-br]
+        contentDir = "content/pt-br"
 
 [menu]
   [[menu.main]]
@@ -461,7 +463,7 @@ disableAliases = true
       identifier = "service-mesh"
       name = "Service mesh"
       title = "Service mesh"
-      url = "/about/service-mesh"
+      url = "/pt-br/about/service-mesh"
       parent = "about"
       weight = 1
 
@@ -469,7 +471,7 @@ disableAliases = true
       identifier = "solutions"
       name = "Solutions"
       title = "Solutions"
-      url = "/about/solutions"
+      url = "/pt-br/about/solutions"
       parent = "about"
       weight = 2
 
@@ -477,7 +479,7 @@ disableAliases = true
       identifier = "case-studies"
       name = "Case studies"
       title = "Case studies"
-      url = "/about/case-studies"
+      url = "/pt-br/about/case-studies"
       parent = "about"
       weight = 3
 
@@ -485,7 +487,7 @@ disableAliases = true
       identifier = "ecosystem"
       name = "Ecosystem"
       title = "Ecosystem"
-      url = "/about/ecosystem"
+      url = "/pt-br/about/ecosystem"
       parent = "about"
       weight = 4
 
@@ -493,7 +495,7 @@ disableAliases = true
       identifier = "deployment"
       name = "Deployment"
       title = "Deployment"
-      url = "/about/deployment"
+      url = "/pt-br/about/deployment"
       parent = "about"
       weight = 5
 
@@ -501,7 +503,7 @@ disableAliases = true
       identifier = "training"
       name = "Training"
       title = "Training"
-      url = "/about/training"
+      url = "/pt-br/about/training"
       parent = "about"
       weight = 6
 
@@ -509,7 +511,7 @@ disableAliases = true
       identifier = "faq"
       name = "FAQ"
       title = "FAQ"
-      url = "/about/faq"
+      url = "/pt-br/about/faq"
       parent = "about"
       weight = 7
 
@@ -517,28 +519,28 @@ disableAliases = true
     identifier = "blog"
     name = "Blog"
     title = "Istio Blog"
-    url = "/blog/"
+    url = "/pt-br/blog/"
     weight = 2
 
   [[languages.pt-br.menu.main]]
     identifier = "news"
     name = "News"
     title = "News"
-    url = "/news/"
+    url = "/pt-br/news/"
     weight = 3
 
   [[languages.pt-br.menu.main]]
     identifier = "get-involved"
     name = "Get involved"
     title = "Get involved"
-    url = "/get-involved/"
+    url = "/pt-br/get-involved/"
     weight = 4
 
   [[languages.pt-br.menu.main]]
     identifier = "docs"
     name = "Documentation"
     title = "Documentation"
-    url = "/docs/"
+    url = "/pt-br/docs/"
     weight = 5
 
 
