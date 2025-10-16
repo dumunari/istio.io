@@ -47,6 +47,8 @@ supported_languages:
     code: "en"
   - name: "Español"
     code: "es"
+  - name: "Portugês (Brasileiro)"
+    code: "pt-br"
   - name: "中文"
     code: "zh"
   - name: "Українська"
