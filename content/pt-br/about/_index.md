@@ -1,7 +1,7 @@
 ---
-title: About Istio
-linktitle: About
-description: Get a bit more in-depth info about the Istio project.
+title: Sobre o Projeto
+linktitle: Sobre
+description: Veja informações mais detalhes sobre o projeto.
 sidebar_none: true
 weight: 15
 doc_type: about

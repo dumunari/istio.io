@@ -122,278 +122,278 @@ other = "Antes de baixar %s, saiba que já existe um novo patch com as últimas 
 other = "APRENDA SOBRE O ISTIO %s"
 
 [relnote_update_notice]
-other = "Update Notice"
+other = "Aviso de Atualização"
 
 [relnote_change_notes_title]
-other = "CHANGE NOTES"
+other = "Mudanças"
 
 [relnote_change_notes_detail]
-other = "Get a detailed list of what's changed."
+other = "Veja uma lista detalhada de mudanças."
 
 [relnote_before_you_upgrade_title]
-other = "BEFORE YOU UPGRADE"
+other = "ANTES DE ATUALIZAR"
 
 [relnote_before_you_upgrade_detail]
-other = "Things to know and prepare before upgrading."
+other = "Revise estes items antes de atualizar."
 
 [relnote_download_title]
-other = "DOWNLOAD"
+other = "BAIXAR"
 
 [relnote_download_detail]
-other = "Download and install this release."
+other = "Baixe e instale esta versão."
 
 [relnote_docs_title]
-other = "DOCS"
+other = "DOCUMENTOS"
 
 [relnote_docs_detail]
-other = "Visit the documentation for this release."
+other = "Visite os documentos dessa versão."
 
 [relnote_helm_changes_title]
-other = "HELM CHANGES"
+other = "MUDANÇAS NO HELM"
 
 [relnote_helm_changes_detail]
-other = "Learn about changes in our Helm installation options."
+other = "Aprenda sobre as mudanças na instalação com Helm."
 
 [relnote_source_changes_title]
-other = "SOURCE CHANGES"
+other = "MUDANÇAS NO CÓDIGO"
 
 [relnote_source_changes_detail]
-other = "Inspect the full set of source code changes."
+other = "Inspecione todas as mudanças no código fonte."
 
 [page_attribution]
-other = "By "
+other = "Por "
 
 [button_copy]
-other = "Copy to clipboard"
+other = "Copie para área de transferência"
 
 [button_print]
-other = "Print"
+other = "Imprimir"
 
 [button_download]
-other = "Download"
+other = "Baixar"
 
 [button_top]
-other = "Back to top"
+other = "Devolta ao topo"
 
 [button_sidenav]
-other = "Toggle the navigation bar"
+other = "Mostrar/escondar barra de navegação"
 
 [partner_component_notice]
-other = "This component was created and is maintained by an Istio partner. Please address support questions to the partner directly."
+other = "Esse componente é mantido por um parceiro do Istio. Para questões de suporte, contate o parceiro diretamente."
 
 [partner_component_partner]
-other = "Partner"
+other = "Parceiro"
 
 [partner_component_contact]
-other = "Contact"
+other = "Contato"
 
 [partner_component_support_site]
-other = "Support Site"
+other = "Suporte"
 
 [partner_component_source_code]
-other = "Source Code"
+other = "Código fonte"
 
 [partner_component_latest_release]
-other = "Latest Release"
+other = "Última Versão"
 
 [partner_component_helm_chart]
 other = "Helm Chart"
 
 [partner_component_istio_versions]
-other = "Tested by %s with these Istio Versions"
+other = "Testado por %s com estas versões de Istio"
 
 [partner_component_supported_templates]
-other = "Supported Templates"
+other = "Templates suportados"
 
 [adapter]
-other = "Adapter"
+other = "Adaptador"
 
 [supported_templates]
-other = "Supported Templates"
+other = "Templates suportados"
 
 [adapters]
-other = "Adapters"
+other = "Adaptadores"
 
 [template]
 other = "Template"
 
 [subscribe]
-other = "Subscribe"
+other = "Inscreva-se"
 
 [see_also]
-other = "See also"
+other = "Veja também"
 
 [links]
 other = "Links"
 
 [generated_file]
-other = "This is an auto-generated file, please edit the source in the %s repo."
+other = "Este arquivo foi gerado automaticamente, edite a fonte no repositório %s."
 
 [switch_lang]
-other = "Switch Language"
+other = "Trocar Língua"
 
 [advisory]
 other = "-"
 
 [syntax_coloring]
-other = "Color Examples"
+other = "Exemplo de Cores"
 
 [analysis_name]
-other = "Message Name"
+other = "Nome da Mensagem"
 
 [analysis_code]
-other = "Message Code"
+other = "Código da Mensagem"
 
 [analysis_description]
-other = "Description"
+other = "Descrição"
 
 [analysis_level]
-other = "Level"
+other = "Nível"
 
 [target_release]
-other = "This blog post was written assuming Istio %v, so some of this content may now be outdated."
+other = "Esse post foi escrito para Istio %v, este conteúdo por estar desatualizado."
 
 [security_disclosure]
-other = "Disclosure"
+other = "Nota de Segurança"
 
 [security_related]
-other = "Related"
+other = "Relacionado"
 
 [security_date]
-other = "Date"
+other = "Data"
 
 [security_affected_releases]
-other = "Affected Releases"
+other = "Versões Afetadas"
 
 [security_impact_score]
-other = "Impact Score"
+other = "Nível de Impacto"
 
 [mark_all_as_read]
-other = "Mark all as read"
+other = "Marcar todos como lido"
 
 [security_bulletin_title]
-other = "Disclosure Details"
+other = "Detalhes da Nota de Segurança"
 
 [security_bulletin_cves]
 other = "CVE(s)"
 
 [security_bulletin_cvss]
-other = "CVSS Impact Score"
+other = "Nível de Impacto CVSS"
 
 [security_bulletin_affected_releases]
-other = "Affected Releases"
+other = "Versões Afetadas"
 
 [feedback_title]
-other = "Was this information useful?"
+other = "Esta informação foi útil?"
 
 [feedback_yes]
-other = "Yes"
+other = "Sim"
 
 [feedback_no]
-other = "No"
+other = "Não"
 
 [feedback_ask_for_comment]
-other = "Do you have any suggestions for improvement?"
+other = "Você tem alguma sugestão para melhorias?"
 
 [feedback_thankyou]
-other = "Thanks for your feedback!"
+other = "Obrigado pelo seu feedback!"
 
 [feedback_comment_placeholder]
-other = "Help us improve..."
+other = "Ajude-nos a melhorar..."
 
 [log_month_format]
-other = "January 2006"
+other = "Janeiro de 2006"
 
 [log_change_format]
 other = "2006/01/02"
 
 [log_when]
-other = "When"
+other = "Quando"
 
 [log_doc]
-other = "Document"
+other = "Documento"
 
 [log_change]
-other = "Change"
+other = "Mudança"
 
 [tested]
-other = "page test"
+other = "teste para a página"
 
 [has_test]
-other = "An automated test is available for this page. Click for details."
+other = "Um teste automatizado está disponível para esta página. Clique para mais detalhes."
 
 [needs_test]
-other = "No automated test is available for this page. Click for details or to help create one."
+other = "Nenhum teste automatizado está disponível para esta página. Clique para mais detalhes ou ajude a criar um teste."
 
 [try_istio]
-other = "Try Istio"
+other = "Experimente o Istio"
 
 [service_mesh]
-other = "Service mesh"
+other = "Malha de serviços"
 
 [what_is_istio]
-other = "What is Istio?"
+other = "O que é o Istio?"
 
 [join_the_community]
-other = "Join the community"
+other = "Participe da comunidade"
 
 [get_started]
-other = "Get started"
+other = "Comece já!"
 
 [latest_news]
-other = "Latest news"
+other = "Últimas notícias"
 
 [solutions]
-other = "Solutions"
+other = "Soluções"
 
 [deployment]
 other = "Deployment"
 
 [learn_more]
-other = "Learn more"
+other = "Aprenda mais"
 
 [read_more]
-other = "Read more"
+other = "Leia mais"
 
 [connect_with_us]
-other = "Connect with us"
+other = "Conecte-se conosco"
 
 
 [traffic_management]
-other = "Reliability"
+other = "Confiabilidade"
 
 [observability]
-other = "Observability"
+other = "Observabilidade"
 
 [security]
-other = "Security"
+other = "Segurança"
 
 [sidebar-toggle]
-other = "Contents"
+other = "Conteúdo"
 
 [add_your_logo]
-other = "Add your logo"
+other = "Adicione seu logo"
 
 [share_your_story]
-other = "Share your story"
+other = "Compartilhe sua estória"
 
 [more_case_studies]
-other = "Also used by"
+other = "Também usado por"
 
 [go_to_solutions]
-other = "Go to solutions"
+other = "Ir para soluções"
 
 [case_study_slogan]
-other = "Read case studies of companies that benefited from implementing Istio"
+other = "Leia estudos de caso de empresas que se beneficiaram do Istio"
 
 [archive_banner_text]
-other = "⚠️ This documentation is for an older version (<strong>%s</strong>) and is no longer updated."
+other = "⚠️ Este documento é para uma versão anterior (<strong>%s</strong>) e não está mais sendo atualizado."
 
 [archive_banner_link]
-other = "Read the latest version."
+other = "Leia a última versão."
 
 [not_found_message]
-other = "We're sorry, the page you requested cannot be found"
+other = "Esta página não foi encontrada"
 
 [not_found_explanation]
-other = "The URL may be misspelled or the page you're looking for is no longer available"
+other = "Esta URL pode conter um erro ou a página que você está procurando não está mais disponível"

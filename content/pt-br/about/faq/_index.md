@@ -1,7 +1,7 @@
 ---
-title: FAQ
-description: Frequently Asked Questions about Istio.
-subtitle: In your search for information about Istio and service mesh technology, we hope this FAQ helps! 
+title: Perguntas Frequentes
+description: Perguntas frequentes sobre o projeto.
+subtitle: Enquanto você se aprofunda sobre Istio e malhas de serviço, esperamos que esta seção te ajude! 
 weight: 1
 layout: faq-landing
 skip_toc: false
