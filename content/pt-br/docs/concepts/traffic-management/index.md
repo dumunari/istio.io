@@ -1,5 +1,5 @@
 ---
-title: Traffic Management
+title: Gerenciamento de Tráfego
 description: Describes the various Istio features focused on traffic routing and control.
 weight: 20
 keywords: [traffic-management, pilot, envoy-proxies, service-discovery, load-balancing]

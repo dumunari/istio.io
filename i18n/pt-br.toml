@@ -2,7 +2,7 @@
 other = "Faça download do Istio %s agora"
 
 [discuss_istio_io_desc]
-other = "Entre nos grupos de dicussão do Istio e participe em conversas e consiga ajuda pra resolver problemas."
+other = "Entre nos grupos de discussão do Istio, participe das conversas e consiga ajuda pra resolver problemas."
 
 [twitter_desc]
 other = "Siga-nos no Twitter para as últimas notícias"
@@ -17,7 +17,7 @@ other = "Siga-nos no Mastodon para as últimas notícias"
 other = "Siga-nos no LinkedIn para as últimas notícias"
 
 [stackoverflow_desc]
-other = "No Stack Overflow você pode fazer perguntas e achar respostas para como fazer seu deployment, configurar e usar o Istio"
+other = "No Stack Overflow você pode fazer perguntas e achar respostas sobre como fazer seu deployment, configurar e usar o Istio"
 
 [for_everyone]
 other = "para todos"
@@ -95,7 +95,7 @@ other = "Última modificação desta página: %s"
 other = "2 de Janeiro de 2006"
 
 [footer_privacy_policy]
-other = "Política de privacidades"
+other = "Política de privacidade"
 
 [footer_terms_and_conditions]
 other = "Termos e Condições"
@@ -230,7 +230,7 @@ other = "Links"
 other = "Este arquivo foi gerado automaticamente, edite a fonte no repositório %s."
 
 [switch_lang]
-other = "Trocar Língua"
+other = "Trocar idioma"
 
 [advisory]
 other = "-"
@@ -358,9 +358,8 @@ other = "Leia mais"
 [connect_with_us]
 other = "Conecte-se conosco"
 
-
 [traffic_management]
-other = "Confiabilidade"
+other = "Gerenciamento de Tráfego"
 
 [observability]
 other = "Observabilidade"
@@ -393,7 +392,7 @@ other = "⚠️ Este documento é para uma versão anterior (<strong>%s</strong>
 other = "Leia a última versão."
 
 [not_found_message]
-other = "Esta página não foi encontrada"
+other = "Esta página não foi encontrada."
 
 [not_found_explanation]
-other = "Esta URL pode conter um erro ou a página que você está procurando não está mais disponível"
+other = "Esta URL pode conter um erro ou a página que você está procurando não está mais disponível."

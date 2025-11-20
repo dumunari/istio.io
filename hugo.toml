@@ -453,56 +453,57 @@ disableAliases = true
     url = "/uk/docs/"
     weight = 5
 
+  # i18n Brazilian Portuguese
   [[languages.pt-br.menu.main]]
     identifier = "about"
-    name = "About"
-    title = "About section"
+    name = "Sobre"
+    title = "Seção Sobre"
     weight = 1
 
     [[languages.pt-br.menu.main]]
       identifier = "service-mesh"
-      name = "Service mesh"
-      title = "Service mesh"
+      name = "Malha de serviços"
+      title = "Malha de serviços"
       url = "/pt-br/about/service-mesh"
       parent = "about"
       weight = 1
 
-    [[mlanguages.pt-br.enu.main]]
+    [[languages.pt-br.menu.main]]
       identifier = "solutions"
-      name = "Solutions"
-      title = "Solutions"
+      name = "Soluções"
+      title = "Soluções"
       url = "/pt-br/about/solutions"
       parent = "about"
       weight = 2
 
     [[languages.pt-br.menu.main]]
       identifier = "case-studies"
-      name = "Case studies"
-      title = "Case studies"
+      name = "Estudos de caso"
+      title = "Estudos de caso"
       url = "/pt-br/about/case-studies"
       parent = "about"
       weight = 3
 
     [[languages.pt-br.menu.main]]
       identifier = "ecosystem"
-      name = "Ecosystem"
-      title = "Ecosystem"
+      name = "Ecossistema"
+      title = "Ecossistema"
       url = "/pt-br/about/ecosystem"
       parent = "about"
       weight = 4
 
     [[languages.pt-br.menu.main]]
       identifier = "deployment"
-      name = "Deployment"
-      title = "Deployment"
+      name = "Implantação"
+      title = "Implantação"
       url = "/pt-br/about/deployment"
       parent = "about"
       weight = 5
 
     [[languages.pt-br.menu.main]]
       identifier = "training"
-      name = "Training"
-      title = "Training"
+      name = "Treinamento"
+      title = "Treinamento"
       url = "/pt-br/about/training"
       parent = "about"
       weight = 6
@@ -524,22 +525,22 @@ disableAliases = true
 
   [[languages.pt-br.menu.main]]
     identifier = "news"
-    name = "News"
-    title = "News"
+    name = "Novidades"
+    title = "Novidades"
     url = "/pt-br/news/"
     weight = 3
 
   [[languages.pt-br.menu.main]]
     identifier = "get-involved"
-    name = "Get involved"
-    title = "Get involved"
+    name = "Faça parte"
+    title = "Faça parte"
     url = "/pt-br/get-involved/"
     weight = 4
 
   [[languages.pt-br.menu.main]]
     identifier = "docs"
-    name = "Documentation"
-    title = "Documentation"
+    name = "Documentação"
+    title = "Documentação"
     url = "/pt-br/docs/"
     weight = 5
 
