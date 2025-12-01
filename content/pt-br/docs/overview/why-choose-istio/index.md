@@ -7,58 +7,58 @@ owner: istio/wg-docs-maintainers-english
 test: n/a
 ---
 
-Istio pioneered the concept of a sidecar-based service mesh when it launched in 2017. Out of the gate, the project included the features that would come to define a service mesh, including standards-based mutual TLS for zero-trust networking, smart traffic routing, and observability through metrics, logs and tracing.
+Istio foi pioneiro no conceito de service mesh baseado em sidecar quando foi lançado em 2017. Desde o início, o projeto incluía os recursos que viriam a definir um service mesh, incluindo mutual TLS baseado em padrões para redes zero-trust, roteamento inteligente de tráfego e observabilidade por meio de métricas, logs e rastreamento.
 
-Since then, the project has driven advances in the mesh space including [multi-cluster & multi-network topologies](/pt-br/docs/ops/deployment/deployment-models/), [extensibility via WebAssembly](/pt-br/docs/concepts/wasm/), the [development of the Kubernetes Gateway API](/pt-br/blog/2022/gateway-api-beta/), and moving the mesh infrastructure away from application developers with [ambient mode](/pt-br/docs/ambient/overview/).
+Desde então, o projeto impulsionou avanços no espaço de mesh, incluindo [topologias multi-cluster e multi-rede](/pt-br/docs/ops/deployment/deployment-models/), [extensibilidade via WebAssembly](/pt-br/docs/concepts/wasm/), o [desenvolvimento da Kubernetes Gateway API](/pt-br/blog/2022/gateway-api-beta/) e a remoção da infraestrutura de mesh do caminho dos desenvolvedores com o [modo ambient](/pt-br/docs/ambient/overview/).
 
-Here are a few reasons we think you should use Istio as your service mesh.
+Aqui estão algumas razões pelas quais achamos que você deve usar Istio como seu service mesh.
 
-## Simple and powerful
+## Simples e poderoso
 
-Kubernetes has hundreds of features and dozens of APIs, but you can get started with it with just one command. We've built Istio to be the same way. Progressive disclosure means you can use a small set of APIs, and only turn the more powerful knobs if you have the need. Other "simple" service meshes spent years catching up to the feature set Istio had on day 1.
+O Kubernetes tem centenas de recursos e dezenas de APIs, mas você pode começar a usá-lo com apenas um comando. Construímos o Istio da mesma forma. A divulgação progressiva significa que você pode usar um pequeno conjunto de APIs e só ativar opções mais avançadas se precisar delas. Outros service meshes “simples” passaram anos tentando alcançar o conjunto de recursos que o Istio já tinha no primeiro dia.
 
-It is better to have a feature and not need it, than to need it and not have it!
+É melhor ter um recurso e não precisar dele, do que precisar e não tê-lo!
 
-## The Envoy proxy {#envoy}
+## O proxy Envoy {#envoy}
 
-From the beginning, Istio has been powered by the {{< gloss >}}Envoy{{< /gloss >}} proxy, a high performance service proxy initially built by Lyft. Istio was the first project to adopt Envoy, and [the Istio team were the first external committers](https://eng.lyft.com/envoy-7-months-later-41986c2fd443). Envoy would go on to become [the load balancer that powers Google Cloud](https://cloud.google.com/load-balancing/docs/https) as well as the proxy for almost every other service mesh platform.
+Desde o início, o Istio foi alimentado pelo proxy {{< gloss >}}Envoy{{< /gloss >}}, um proxy de serviço de alto desempenho criado inicialmente pela Lyft. O Istio foi o primeiro projeto a adotar o Envoy, e [a equipe do Istio foi a primeira a contribuir externamente](https://eng.lyft.com/envoy-7-months-later-41986c2fd443). O Envoy se tornaria [o balanceador de carga que alimenta o Google Cloud](https://cloud.google.com/load-balancing/docs/https), além de ser o proxy de quase todas as outras plataformas de service mesh.
 
-Istio inherits all the power and flexibility of Envoy, including world-class extensibility using WebAssembly that was [developed in Envoy by the Istio team](/pt-br/blog/2020/wasm-announce/).
+O Istio herda todo o poder e flexibilidade do Envoy, incluindo extensibilidade de nível mundial usando WebAssembly, que foi [desenvolvida no Envoy pela equipe do Istio](/pt-br/blog/2020/wasm-announce/).
 
-## Community
+## Comunidade
 
-Istio is a true community project. In 2023, there were 10 companies who made over 1,000 contributions each to Istio, with no single company exceeding 25%. ([See the numbers here](https://istio.devstats.cncf.io/d/5/companies-table?var-period_name=Last%20year&var-metric=contributions&orgId=1)).
+Istio é um verdadeiro projeto comunitário. Em 2023, havia 10 empresas que fizeram mais de 1.000 contribuições cada para o Istio, sem nenhuma empresa ultrapassar 25%. ([Veja os números aqui](https://istio.devstats.cncf.io/d/5/companies-table?var-period_name=Last%20year&var-metric=contributions&orgId=1)).
 
-No other service mesh project has the breadth of support from the industry as Istio.
+Nenhum outro service mesh possui o mesmo nível de apoio da indústria que o Istio.
 
-## Packages
+## Pacotes
 
-We make stable binary releases available to everyone, with every release, and commit to continue doing so. We publish free and regular security patches for [our latest release and a number of prior releases](/pt-br/docs/releases/supported-releases/). Many of our vendors will support older versions, but we believe that engaging a vendor should not be a requirement to be safe in a stable open source project.
+Disponibilizamos versões binárias estáveis para todos, em cada lançamento, e nos comprometemos a continuar fazendo isso. Publicamos patches de segurança gratuitos e regulares para nossa [versão mais recente e várias versões anteriores](/pt-br/docs/releases/supported-releases/). Muitos de nossos fornecedores oferecem suporte a versões mais antigas, mas acreditamos que depender de um fornecedor não deve ser um requisito para ter segurança em um projeto open source estável.
 
-## Alternatives considered
+## Alternativas consideradas
 
-A good design document includes a section on alternatives that were considered, and ultimately rejected.
+Um bom documento de design inclui uma seção sobre alternativas consideradas e, por fim, rejeitadas.
 
-### Why not "use eBPF"?
+### Por que "usar eBPF"?
 
-We do - where it's appropriate! Istio can be configured to use {{< gloss >}}eBPF{{< /gloss >}} [to route traffic from pods to proxies](/pt-br/blog/2022/merbridge/). This shows a small performance increase over using `iptables`.
+Nós usamos – quando é apropriado! O Istio pode ser configurado para usar {{< gloss >}}eBPF{{< /gloss >}} para [rotear tráfego dos pods para os proxies](/pt-br/blog/2022/merbridge/). Isso mostra um pequeno aumento de desempenho em comparação ao uso de `iptables`.
 
 Why not use it for everything? No-one does, because no-one actually can.
 
-eBPF is a virtual machine that runs inside the Linux kernel. It was designed for functions guaranteed to complete in a limited compute envelope to avoid destabilizing kernel behavior, such as those that perform simple L3 traffic routing or application observability. It was not designed for long running or complex functions like those found in Envoy: that's why operating systems have [user space](https://en.wikipedia.org/wiki/User_space_and_kernel_space)! eBPF maintainers have theorized that it could eventually be extended to support running a program as complex as Envoy, but this is a science project and unlikely to have real world practicality.
+eBPF é uma máquina virtual que roda dentro do kernel Linux. Ele foi projetado para funções garantidas a serem concluídas com uso limitado de computação, evitando desestabilizar o kernel, como funções que realizam roteamento simples de tráfego L3 ou observabilidade de aplicações. Ele não foi projetado para funções longas ou complexas como as encontradas no Envoy: é por isso que sistemas operacionais têm [user space](https://en.wikipedia.org/wiki/User_space_and_kernel_space)! Os mantenedores de eBPF teorizaram que ele poderia eventualmente ser estendido para suportar um programa tão complexo quanto o Envoy, mas isso é um projeto científico e improvável que tenha aplicabilidade prática no mundo real.
 
-Other meshes that claim to "use eBPF" actually use a per-node Envoy proxy, or other user space tools, for much of their functionality.
+Outros meshes que afirmam “usar eBPF” na verdade usam um proxy Envoy por nó, ou outras ferramentas em espaço de usuário, para grande parte de sua funcionalidade.
 
-### Why not use a per-node proxy?
+### Por que não usar um proxy por nó?
 
-Envoy is not inherently multi-tenant. As a result, we have major security and stability concerns with commingling complex processing rules for L7 traffic from multiple unconstrained tenants in a shared instance. Since Kubernetes, by default can schedule a pod from any namespace onto any node, the node is not an appropriate tenancy boundary. Budgeting and cost attribution are also major issues, as L7 processing costs a lot more than L4.
+Envoy não é inerentemente multi-tenant. Como resultado, temos grandes preocupações de segurança e estabilidade ao misturar regras complexas de processamento de tráfego L7 de múltiplos tenants não restritos em uma instância compartilhada. Como o Kubernetes, por padrão, pode agendar um pod de qualquer namespace em qualquer nó, o nó não é um limite apropriado para tenancy. Planejamento e atribuição de custos também são grandes problemas, já que o processamento L7 custa muito mais do que L4.
 
-In ambient mode, we strictly limit our ztunnel proxy to L4 processing - [just like the Linux kernel](https://blog.howardjohn.info/posts/ambient-spof/). This reduces the vulnerability surface area significantly, and allows us to safely operate a shared component. Traffic is then forwarded off to Envoy proxies that operate per-namespace, such that no Envoy proxy is ever multi-tenant.
+No modo ambient, limitamos estritamente nosso proxy ztunnel ao processamento L4 — [assim como o kernel Linux](https://blog.howardjohn.info/posts/ambient-spof/). Isso reduz significativamente a superfície de vulnerabilidade e nos permite operar com segurança um componente compartilhado. O tráfego é então encaminhado para proxies Envoy que operam por namespace, garantindo que nenhum proxy Envoy seja multi-tenant.
 
-## I have a CNI. Why do I need Istio?
+## Eu já tenho um CNI. Por que preciso do Istio?
 
-Today, some CNI plugins are starting to offer service mesh-like functionality as an add-on that sits on top of their own CNI implementation. For example, they may implement their own encryption schemes for traffic between nodes or pods, workload identity, or support some amount of transport-level policy by redirecting traffic to a L7 proxy. These service mesh addons are non-standard, and as such can only work on top of the CNI that ships them. They also offer varying feature sets. For example, solutions built on top of Wireguard cannot be made FIPS-compliant.
+Hoje, alguns plugins CNI estão começando a oferecer funcionalidades semelhantes a service mesh como um complemento que fica sobre sua própria implementação CNI. Por exemplo, eles podem implementar seus próprios esquemas de criptografia para tráfego entre nós ou pods, identidade de workloads ou algum nível de política em nível de transporte, redirecionando tráfego para um proxy L7. Esses complementos de service mesh são não padronizados e, portanto, só funcionam sobre o CNI que os fornece. Eles também oferecem conjuntos de recursos variados. Por exemplo, soluções baseadas em Wireguard não podem ser compatíveis com FIPS.
 
-For this reason, Istio has implemented its zero-trust tunnel (ztunnel) component, which transparently and efficiently provides this functionality using proven, industry-standard encryption protocols. [Learn more about ztunnel](/pt-br/docs/ambient/overview).
+Por esse motivo, o Istio implementou seu componente de túnel zero-trust (ztunnel), que fornece essa funcionalidade de forma transparente e eficiente usando protocolos de criptografia comprovados e padrão da indústria. [Saiba mais sobre ztunnel](/pt-br/docs/ambient/overview).
 
-Istio is designed to be a service mesh that provides a consistent, highly secure, efficient, and standards-compliant service mesh implementation providing a [powerful set of L7 policies](/pt-br/docs/concepts/security/#authorization), [platform-agnostic workload identity](/pt-br/docs/concepts/security/#istio-identity), using [industry-proven mTLS protocols](/pt-br/docs/concepts/security/#mutual-tls-authentication) - in any environment, with any CNI, or even across clusters with different CNIs.
+O Istio foi projetado para ser um service mesh que oferece uma implementação consistente, altamente segura, eficiente e compatível com padrões, proporcionando um [conjunto poderoso de políticas L7](/pt-br/docs/concepts/security/#authorization), [identidade de workload independente de plataforma](/pt-br/docs/concepts/security/#istio-identity) e [uso de protocolos mTLS comprovados na indústria](/pt-br/docs/concepts/security/#mutual-tls-authentication) — em qualquer ambiente, com qualquer CNI, ou até mesmo entre clusters com CNIs diferentes.

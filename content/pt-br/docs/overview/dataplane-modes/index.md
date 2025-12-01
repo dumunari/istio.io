@@ -1,42 +1,44 @@
 ---
-title: Sidecar or ambient?
-description: Learn about Istio's two dataplane modes and which you should use.
+title: Sidecar ou ambient?
+description: Aprenda sobre os modos Dataplane do Istio e qual você deveria utilizar.
 weight: 30
 keywords: [sidecar, ambient]
 owner: istio/wg-docs-maintainers-english
 test: n/a
 ---
 
-An Istio service mesh is logically split into a data plane and a control plane.
+A service mesh criada pelo Istio é dividida em dois componentes: data plane e control plane.
 
-The {{< gloss >}}data plane{{< /gloss >}} is the set of proxies that mediate and control all network communication between microservices. They also collect and report telemetry on all mesh traffic.
+O {{< gloss >}}data plane{{< /gloss >}} é o conjunto de proxies que interceptam e controlam toda a comunicação entre os microsserviços.
+Também coletam e reportam a telemetria de toda a mesh.
 
-The {{< gloss >}}control plane{{< /gloss >}} manages and configures the proxies in the data plane.
+O {{< gloss >}}control plane{{< /gloss >}} gerencia e configura os proxies integrados ao data plane.
 
-Istio supports two main {{< gloss "data plane mode">}}data plane modes{{< /gloss >}}:
+Istio suporta dois modos do {{< gloss "data plane mode">}}data plane{{< /gloss >}}:
 
-* **sidecar mode**, which deploys an Envoy proxy along with each pod that you start in your cluster, or running alongside services running on VMs.
-* **ambient mode**, which uses a per-node Layer 4 proxy, and optionally a per-namespace Envoy proxy for Layer 7 features.
+* **sidecar**, que realiza o deploy de um proxy Envoy em cada pod existente no seu cluster ou como um serviço sendo executado em VMs.
+* **ambient**, que utiliza um proxy Envoy camada 4 por node e (opcionalmente) um proxy Envoy camada 7 por namespace.
 
-You can opt certain namespaces or workloads into each mode.
+Você pode escolher quais namespaces e workloads deseja para cada modo.
 
-## Sidecar mode
+## Modo Sidecar
 
-Istio has been built on the sidecar pattern from its first release in 2017. Sidecar mode is well understood and thoroughly battle-tested, but comes with a resource cost and operational overhead.
+Istio foi construído no modelo baseado em sidecar desde o primeiro lançamento em 2017. O modelo Sidecar é bem compreendido e amplamente testado, porém traz um aumento no consumo de recursos e sobrecarga operacional.
 
-* Each application you deploy has an Envoy proxy {{< gloss "injection" >}}injected{{< /gloss >}} as a sidecar
-* All proxies can process both Layer 4 and Layer 7
+* Toda aplicação executada terá um proxy Envoy {{< gloss "injection" >}}injetado{{< /gloss >}} como um sidecar
+* Todos os proxies podem processar requisições de camada 4 e 7
 
-## Ambient mode
+## Modo Ambient
 
-Launched in 2022, ambient mode was built to address the shortcomings reported by users of sidecar mode. As of Istio 1.22, it is production-ready for single cluster use cases.
+Lançado em 2022, o modo Ambiente foi construído para solucionar dificuldades reportadas pelos usuários do modo sidecar. A partir do Istio 1.22, o modo ambient foi declarado como pronto para produção para cenários de clusteres únicos.
 
-* All traffic is proxied through a Layer 4-only node proxy
-* Applications can opt in to routing through an Envoy proxy to get Layer 7 features
+* Todo o tráfego é passado através de um proxy camada 4
+* Aplicações podem ter seu tráfego de camada 7 roteado por um proxy Envoy
 
-## Choosing between sidecar and ambient
+## Escolhendo entre sidecar e ambient
 
-Users often deploy a mesh to enable a zero-trust security posture as a first-step and then selectively enable L7 capabilities as needed. Ambient mesh allows those users to bypass the cost of L7 processing entirely when it’s not needed.
+Usuários frequentemente realizam o deployment de uma mesh para habilitar capacidades de zero-trust como um primeiro passo e posteriormente, habilitam capacidades extras de camada 7 conforme necessário.
+O modo Ambient permite que esses usuários ignorem os custos adicionados pelo processamento em camada 7 quando não forem necessários.
 
 <table>
   <thead>
@@ -48,104 +50,104 @@ Users often deploy a mesh to enable a zero-trust security posture as a first-ste
   </thead>
   <tbody>
     <tr>
-      <th>Traffic management</th>
-      <td>Full Istio feature set</td>
-      <td>Full Istio feature set (requires using waypoint)</td>
+      <th>Gerenciamento de tráfego</th>
+      <td>Contém todas as capacidades</td>
+      <td>Contém todas as capacidades (requer o uso do waypoint)</td>
     </tr>
     <tr>
-      <th>Security</th>
-      <td>Full Istio feature set</td>
-      <td>Full Istio feature set: encryption and L4 authorization in ambient mode. Requires waypoints for L7 authorization.</td>
+      <th>Segurança</th>
+      <td>Contém todas as capacidades</td>
+      <td>Contém todas as capacidades: criptografia e autorização em camada 4 no modo ambient. Requer waypoint para autorização de camada 7.</td>
     </tr>
     <tr>
-      <th>Observability</th>
-      <td>Full Istio feature set</td>
-      <td>Full Istio feature set: L4 telemetry in ambient mode; L7 observability when using waypoint</td>
+      <th>Observabilidade</th>
+      <td>Contém todas as capacidades</td>
+      <td>Contém todas as capacidades: telemetria de camada 4 no modo ambient; observabilidade de camada 7 ao utilizar o waypoint</td>
     </tr>
     <tr>
-      <th>Extensibility</th>
-      <td>Full Istio feature set</td>
-      <td>Via <a href="/docs/ambient/usage/extend-waypoint-wasm">WebAssembly plugins</a> (requires using waypoint)<br>The EnvoyFilter API is not supported.</td>
+      <th>Extensibilidade</th>
+      <td>Contém todas as capacidades</td>
+      <td>Através de <a href="/docs/ambient/usage/extend-waypoint-wasm">plugins WebAssembly</a> (requer waypoint)<br>A API EnvoyFilter não é suportada.</td>
     </tr>
     <tr>
-      <th>Adding workloads to the mesh</th>
-      <td>Label a namespace and restart all pods to have sidecars added</td>
-      <td>Label a namespace - no pod restart required</td>
+      <th>Adicionando workloads na mesh</th>
+      <td>Adicione uma label ao namespace e reinicie todos os pods para ter os sidecars injetados</td>
+      <td>Adicione uma label ao namespace - sem necessidade de reiniciar os pods</td>
     </tr>
     <tr>
-      <th>Incremental deployment</th>
-      <td>Binary: sidecar is injected or it isn't</td>
-      <td>Gradual: L4 is always on, L7 can be added by configuration</td>
+      <th>Deployment incremental</th>
+      <td>Binário: sidecar é ou não injetado</td>
+      <td>Gradual: camada 4 estás sempre ativo, camada 7 pode ser adicionado</td>
     </tr>
     <tr>
-      <th>Lifecycle management</th>
-      <td>Proxies managed by application developer</td>
-      <td>Platform administrator</td>
+      <th>Gerenciamento de ciclo de vida</th>
+      <td>Proxies gerenciados pelo desenvolvedor da aplicação</td>
+      <td>Administrador da plataforma</td>
     </tr>
     <tr>
-      <th>Utilization of resources</th>
-      <td>Wasteful; CPU and memory resources must be provisioned for worst case usage of each individual pod</td>
-      <td>Waypoint proxies can be auto-scaled like any other Kubernetes deployment.<br>A workload with many replicas can use one waypoint, vs. each one having its own sidecar.
+      <th>Utilização de recursos</th>
+      <td>Desperdício; CPU e memória devem ser provisionados para o pior cenário de cada pod</td>
+      <td>Proxies waypoint podem auto-escalar como qualquer outro deployment.<br>Um workload com múltiplas réplicas pode utilizar um waypoint, ao invés de cada um ter seu próprio sidecar.
       </td>
     </tr>
     <tr>
-      <th>Average resource cost</th>
-      <td>Large</td>
-      <td>Small</td>
+      <th>Média de custo do recurso</th>
+      <td>Grande</td>
+      <td>Pequena</td>
     </tr>
     <tr>
-      <th>Average latency (p90/p99)</th>
+      <th>Latência média (p90/p99)</th>
       <td>0.63ms-0.88ms</td>
       <td>Ambient: 0.16ms-0.20ms<br />Waypoint: 0.40ms-0.50ms</td>
     </tr>
     <tr>
-      <th>L7 processing steps</th>
-      <td>2 (source and destination sidecar)</td>
-      <td>1 (destination waypoint)</td>
+      <th>Pontos de processamento (camada 7)</th>
+      <td>2 (sidecar de origem e destino)</td>
+      <td>1 (waypoint de destino)</td>
     </tr>
     <tr>
-      <th>Configuration at scale</th>
-      <td>Requires <a href="/docs/ops/configuration/mesh/configuration-scoping/">configuration of the scope of each sidecar</a> to reduce configuration</td>
-      <td>Works without custom configuration</td>
+      <th>Configuração em escala</th>
+      <td>Requer <a href="/docs/ops/configuration/mesh/configuration-scoping/">a configuração do escopo de cada sidecar</a> para configuração reduzida</td>
+      <td>Funciona sem configuração adicional</td>
     </tr>
     <tr>
-      <th>Supports "server-first" protocols</th>
-      <td><a href="/docs/ops/deployment/application-requirements/#server-first-protocols">Requires configuration</a></td>
-      <td>Yes</td>
+      <th>Compatível com protocolos "server-first"</th>
+      <td><a href="/docs/ops/deployment/application-requirements/#server-first-protocols">Requer configuração</a></td>
+      <td>Sim</td>
     </tr>
     <tr>
-      <th>Support for Kubernetes Jobs</th>
-      <td>Complicated by long life of sidecar</td>
-      <td>Transparent</td>
+      <th>Compatível com Kubernetes Jobs</th>
+      <td>Dificultado pelo longo ciclo de vida do sidecar</td>
+      <td>Transparente</td>
     </tr>
     <tr>
-      <th>Security model</th>
-      <td>Strongest: each workload has its own keys</td>
-      <td>Strong: each node agent has only the keys for workloads on that node</td>
+      <th>Modelo de segurança</th>
+      <td>Mais Forte: cada workload tem suas próprias chaves</td>
+      <td>Forte: cada agent tem apenas as chaves dos workloads daquele node</td>
     </tr>
     <tr>
-      <th>Compromised application pod<br>gives access to mesh keys</th>
-      <td>Yes</td>
-      <td>No</td>
+      <th>Pod comprometido<br>fornece acesso às chaves da mesh</th>
+      <td>Sim</td>
+      <td>Não</td>
     </tr>
     <tr>
-      <th>Support</th>
-      <td>Stable, including multi-cluster</td>
-      <td>Stable, only single-cluster</td>
+      <th>Suporte</th>
+      <td>Estável, incluindo multi-cluster</td>
+      <td>Estável, apenas para cluster único</td>
     </tr>
     <tr>
-      <th>Platforms supported</th>
-      <td>Kubernetes (any CNI)<br />Virtual machines</td>
-      <td>Kubernetes (any CNI)</td>
+      <th>Plataformas comportadas</th>
+      <td>Kubernetes (qualquer CNI)<br />Máquinas virtuais</td>
+      <td>Kubernetes (qualquer CNI)</td>
     </tr>
   </tbody>
 </table>
 
-## Layer 4 vs Layer 7 features
+## Capacidades de camada 4 x camada 7
 
-The overhead for processing protocols at Layer 7 is substantially higher than processing network packets at Layer 4. For a given service, if your requirements can be met at L4, service mesh can be delivered at substantially lower cost.
+O uso de recursos para protocolos de processamento em camada 7 é consideravelmente mais alto do que o processamento em camada 4. Caso seja possível atender seu caso de uso com processamento em camada 4, sua service mesh pode acabar tendo custos muito mais baixos.
 
-### Security
+### Segurança
 
 <table>
   <thead>
@@ -157,43 +159,43 @@ The overhead for processing protocols at Layer 7 is substantially higher than pr
    </thead>
    <tbody>
     <tr>
-      <th>Encryption</th>
-      <td>All traffic between pods is encrypted using {{< gloss "mutual tls authentication" >}}mTLS{{< /gloss >}}.</td>
-      <td>N/A&mdash;service identity in Istio is based on TLS.</td>
+      <th>Criptografia</th>
+      <td>Todo o tráfego entre os pods é criptografado utilizando {{< gloss "mutual tls authentication" >}}mTLS{{< /gloss >}}.</td>
+      <td>N/A&mdash; identidade dos serviços é baseada em TLS.</td>
     </tr>
     <tr>
-      <th>Service-to-service authentication</th>
-      <td>{{< gloss >}}SPIFFE{{< /gloss >}}, via mTLS certificates. Istio issues a short-lived X.509 certificate that encodes the pod's service account identity.</td>
-      <td>N/A&mdash;service identity in Istio is based on TLS.</td>
+      <th>Autenticação entre serviços</th>
+      <td>{{< gloss >}}SPIFFE{{< /gloss >}}, através de certificados mTLS. Istio emite certificados X.509 que codificam a conta de serviço do pod.</td>
+      <td>N/A&mdash; identidade dos serviços é baseada em TLS.</td>
     </tr>
     <tr>
-      <th>Service-to-service authorization</th>
-      <td>Network-based authorization, plus identity-based policy, e.g.:
+      <th>Autorização entre serviços</th>
+      <td>Autorização baseada em rede, utilização de políticas baseadas em identidade, ex:
         <ul>
-          <li>A can accept inbound calls from only "10.2.0.0/16";</li>
-          <li>A can call B.</li>
+          <li>A pode aceitar requisições apenas vindas de "10.2.0.0/16";</li>
+          <li>A pode chamar B.</li>
         </ul>
       </td>
-      <td>Full policy, e.g.:
+      <td>Política extensa, ex:
         <ul>
-          <li>A can GET /foo on B only with valid end-user credentials containing the READ scope.</li>
+          <li>A pode executar um GET no endpoint /foo de B, apenas utilizando uma credencial válida que contém o escopo READ.</li>
         </ul>
       </td>
     </tr>
     <tr>
-      <th>End-user authentication</th>
-      <td>N/A&mdash;we can't apply per-user settings.</td>
-      <td>Local authentication of JWTs, support for remote authentication via OAuth and OIDC flows.</td>
+      <th>Autenticação de usuário</th>
+      <td>N/A&mdash; não existe controle por usuário.</td>
+      <td>Autenticação local com JWTs e suporte para autenticação remota utilizando Oauth e OIDC.</td>
     </tr>
     <tr>
-      <th>End-user authorization</th>
-      <td>N/A&mdash;see above.</td>
-      <td>Service-to-service policies can be extended to require <a href="/docs/reference/config/security/conditions/">end-user credentials with specific scopes, issuers, principal, audiences, etc.</a><br />Full user-to-resource access can be implemented using external authorization, allowing per-request policy with decisions from an external service, e.g. OPA.</td>
+      <th>Autorização de usuário</th>
+      <td>N/A&mdash;veja acima.</td>
+      <td>Políticas entre serviços podem ser estendidas para garantir  <a href="/docs/reference/config/security/conditions/">autenticação de usuários com credenciais contendo campos como scopes, issuers, principal, audiences, e mais.</a><br />Autorização entre usuário e recurso pode ser implementada através de autorização externa, permitindo políticas por request com decisões guiadas por um componente externo, como o OPA.</td>
     </tr>
   </tbody>
 </table>
 
-### Observability
+### Observabilidade
 
 <table>
   <thead>
@@ -206,81 +208,23 @@ The overhead for processing protocols at Layer 7 is substantially higher than pr
    <tbody>
     <tr>
       <th>Logging</th>
-      <td>Basic network information: network 5-tuple, bytes sent/received, etc. <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators">See Envoy docs</a>.</td>
-      <td><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators">Full request metadata logging</a>, in addition to basic network information.</td>
-    </tr>
-    <tr>
-      <th>Tracing</th>
-      <td>Not today; possible eventually with HBONE.</td>
-      <td>Envoy participates in distributed tracing. <a href="/docs/tasks/observability/distributed-tracing/overview/">See Istio overview on tracing</a>.</td>
-    </tr>
-    <tr>
-      <th>Metrics</th>
-      <td>TCP only (bytes sent/received, number of packets, etc.).</td>
-      <td>L7 RED metrics: rate of requests, rate of errors, request duration (latency).</td>
-    </tr>
-  </tbody>
-</table>
+      <td>Informações básicas de rede: 5-tuple de rede, bytes enviados/recebidos, etc. <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators">Veja a documentação do Envoy</a>.</td>
+        <td><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators">Registro completo de metadados de requisição</a>, além das informações básicas de rede.</td>
+          </tr>
+          <tr>
+        <th>Rastreamento</th>
+        <td>Inexistente; possível eventualmente utilizando HBONE.</td>
+        <td>O Envoy participa no rastreamento distribuído. <a href="/docs/tasks/observability/distributed-tracing/overview/">Veja a visão geral do Istio sobre rastreamento</a>.</td>
+          </tr>
+          <tr>
+        <th>Métricas</th>
+        <td>Apenas TCP (bytes enviados/recebidos, número de pacotes, etc.).</td>
+        <td>Métricas RED de camada 7: taxa de requisições, taxa de erros, duração da requisição (latência).</td>
+          </tr>
+        </tbody>
+      </table>
 
-### Traffic management
-
-<table>
-  <thead>
-    <tr>
-      <td style="border-width: 0px" width="20%"></td>
-      <th width="40%">L4</th>
-      <th width="40%">L7</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-      <th>Load balancing</th>
-      <td>Connection level only. <a href="/docs/tasks/traffic-management/tcp-traffic-shifting/">See TCP traffic shifting task</a>.</td>
-      <td>Per request, enabling e.g. canary deployments, gRPC traffic, etc. <a href="/docs/tasks/traffic-management/traffic-shifting/">See HTTP traffic shifting task</a>.</td>
-    </tr>
-    <tr>
-      <th>Circuit breaking</th>
-      <td><a href="/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings">TCP only</a>.</td>
-      <td><a href="/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings">HTTP settings</a> in addition to TCP.</td>
-    </tr>
-    <tr>
-      <th>Outlier detection</th>
-      <td>On connection establishment/failure.</td>
-      <td>On request success/failure.</td>
-    </tr>
-    <tr>
-      <th>Rate limiting</th>
-      <td><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/rate_limit_filter#config-network-filters-rate-limit">Rate limit on L4 connection data only, on connection establishment</a>, with global and local rate limiting options.</td>
-      <td><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rate_limit_filter#config-http-filters-rate-limit">Rate limit on L7 request metadata</a>, per request.</td>
-    </tr>
-    <tr>
-      <th>Timeouts</th>
-      <td>Connection establishment only (connection keep-alive is configured via circuit breaking settings).</td>
-      <td>Per request.</td>
-    </tr>
-    <tr>
-      <th>Retries</th>
-      <td>Retry connection establishment</td>
-      <td>Retry per request failure.</td>
-    </tr>
-    <tr>
-      <th>Fault injection</th>
-      <td>N/A&mdash;fault injection cannot be configured on TCP connections.</td>
-      <td>Full application and connection-level faults (<a href="/docs/tasks/traffic-management/fault-injection/">timeouts, delays, specific response codes</a>).</td>
-    </tr>
-    <tr>
-      <th>Traffic mirroring</th>
-      <td>N/A&mdash;HTTP only</td>
-      <td><a href="/docs/tasks/traffic-management/mirroring/">Percentage-based mirroring of requests to multiple backends</a>.</td>
-    </tr>
-  </tbody>
-</table>
-
-## Unsupported features
-
-The following features are available in sidecar mode, but not yet implemented in ambient mode:
-
-* Sidecar-to-waypoint interoperability
-* Multi-cluster installations
-* Multi-network support
-* VM support
+* Conexão entre sidecar e waypoint
+* Multi-cluster
+* Multi rede
+* Suporte para VMs
